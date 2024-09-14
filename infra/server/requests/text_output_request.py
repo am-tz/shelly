@@ -19,9 +19,8 @@ class TextOutputRequest(BaseEndPointRequest):
     def get(self):
 
         output: List[str] = []
-        while not self.__queues.output_queue.empty():
-            output.append(str(self.__queues.output_queue.get(True, 0.1)))
-
+        while not self.__queues.output_queue.empty:
+            output.append(str(self.__queues.output_queue.get()))
         return "\n".join(output)
 
     @staticmethod

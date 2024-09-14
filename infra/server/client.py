@@ -29,7 +29,7 @@ class Client(Loggable):
             self._logger.error(message)
 
     def put_message(self, user_message: str, language: str):
-        response: Response = post(f"{self.__base_url}/textInput", json={'text': user_message, 'language': language})
+        response: Response = post(f"{self.__base_url}/textInput", json={'Message': user_message, 'Language': language})
         message = f"{response.status_code}: {response.text}"
         if response.status_code == 200:
             self._logger.info(message)

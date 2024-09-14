@@ -4,7 +4,7 @@ from time import sleep
 # Internal libs
 from infra.server.client import Client
 from infra.log.loggable import Loggable
-
+from infra.server.app import ChatQueues
 # General utilities
 
 
@@ -43,7 +43,7 @@ if __name__ == '__main__':
     host = argv[1] if len(argv) > 1 else 'localhost'
 
     if host == 'localhost':
-        with Server(Move(), custom_host=host) as manager:
+        with Server(Move(), ChatQueues(), host=host) as manager:
             cm = Chat(manager.ip)
             cm.run()
     else:
