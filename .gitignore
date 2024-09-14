@@ -6,3 +6,4 @@
 /files/tests/cut_bam.wav
 /files/tests/uncut_bam.wav
 /.idea/
+*.pyc
