@@ -32,7 +32,7 @@ def main():
     if args.mode == 'git':
         run("git push")
         shell_commands = [
-            "cd ~/Desktop/Shelly",
+            "cd ~/Desktop/shelly",
             "git pull"
         ]
     elif args.mode == 'zip':
@@ -42,15 +42,15 @@ def main():
         shell_commands = [
             "cd ~/Desktop",
             "ls",
-            "rm -r Shelly -f",
+            "rm -r shelly -f",
             "ls",
-            "unzip Shelly.zip",
-            "cd Shelly"
+            "unzip shelly.zip",
+            "cd shelly"
         ]
 
     if args.updateReqs:
         shell_commands += [
-            "python -m venv ~/Desktop/Shelly/.venv",
+            "python -m venv ~/Desktop/shelly/.venv",
             "source ./.venv/bin/activate",
             "pip install -r requirements.txt"
         ]

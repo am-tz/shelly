@@ -5,12 +5,12 @@ from zipfile import ZipFile
 
 def pack() -> str:
     module_dir: str = realpath(join(dirname(__file__), pardir, pardir))
-    zip_path: str = realpath(join(module_dir, pardir, 'Shelly.zip'))
+    zip_path: str = realpath(join(module_dir, pardir, 'shelly.zip'))
     with ZipFile(join(zip_path), 'w') as zipf:
         for root, dirs, files in walk(module_dir):
             if 'venv' in root or '__pycache__' in root or '.idea' in root:
                 continue
-            module_root: str = root[root.find("Shelly")-1:]
+            module_root: str = root[root.find("shelly")-1:]
             zipf.mkdir(module_root)
             for file in files:
                 actual_path: str = join(root, file)
