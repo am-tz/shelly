@@ -78,7 +78,7 @@ class Client(Manager):
             raise exc
 
     def query_chat(self, conversation: Conversation,
-                   model: Model = Model.GPT__4,
+                   model: Model = Model.GPT__4O__MINI,
                    json_format: bool = False,
                    temperature: float | None = None) -> str:
 
