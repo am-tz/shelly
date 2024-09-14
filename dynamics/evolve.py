@@ -119,7 +119,7 @@ class Evolve(Manager):
         #        while self.__transcription_generator.queue.qsize() > 0:
         #            message: Message = self.__transcription_generator.queue.get
         while not self.__chat_queues.input_queue.empty():
-            message: Message = self.__chat_queues.input_queue.queue.get()
+            message: Message = self.__chat_queues.input_queue.get()
             self._logger.info(message)
             self.__conversation.append(message)
 
