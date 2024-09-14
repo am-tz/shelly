@@ -1,9 +1,9 @@
 # Internal libs
-from task.interface.interface import Interface
-from task.interface.move import Move, MoveImp
-from task.interface.shake_head import ShakeHead
-from task.interface.speak import Speak
-from task.interface.ponder import Ponder
+from dynamics.task.interface.interface import Interface
+from dynamics.task.interface.move import Move, MoveImp
+from dynamics.task.interface.shake_head import ShakeHead
+from dynamics.task.interface.speak import Speak
+from dynamics.task.interface.ponder import Ponder
 
 from dynamics.state import State
 from dynamics.task.thought import Thought
