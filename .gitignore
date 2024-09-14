@@ -7,3 +7,4 @@
 /files/tests/uncut_bam.wav
 /.idea/
 *.pyc
+.venv/
