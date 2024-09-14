@@ -19,6 +19,7 @@ from peripherals.audio.output import Output as AudioOutput
 from peripherals.audio.timing import Timing as AudioTiming
 from peripherals.audio.apps.white_noise_generator import WhiteNoiseGenerator
 from peripherals.audio.apps.transcription_generator import TranscriptionGenerator
+from peripherals.text.chat_queues import ChatQueues
 
 from infra.server.server import Server
 
@@ -57,6 +58,7 @@ class Evolve(Manager):
     __audio_output: AudioOutput = None
     __audio_timing: AudioTiming = None
     __transcription_generator: TranscriptionGenerator = None
+    __chat_queues: ChatQueues = None
     __white_noise_generator: WhiteNoiseGenerator = None
     __server_manager: Server = None
     __cpu_temp_check: Cpu = None
@@ -81,10 +83,12 @@ class Evolve(Manager):
 
         # Manageable types
         self.__move_imp = self.register(MoveImp())
-        self.__audio_input = self.register(AudioInput(long_timeout=6.0))
+        # Audio input is disabled for now because of microphone issues
+        # self.__audio_input = self.register(AudioInput(long_timeout=6.0))
         self.__audio_output = self.register(AudioOutput())
-        self.__audio_timing = self.register(AudioTiming([self.__audio_input], [self.__audio_output]))
-        self.__transcription_generator = self.register(TranscriptionGenerator(self.__audio_input, 10.0))
+        self.__audio_timing = self.register(AudioTiming([], [self.__audio_output]))
+        # self.__transcription_generator = self.register(TranscriptionGenerator(self.__audio_input, 10.0))
+        self.__chat_queues = self.register(ChatQueues())
         self.__white_noise_generator = self.register(WhiteNoiseGenerator())
         self.__server_manager = self.register(Server(self.__move_imp))
         self.__cpu_temp_check = self.register(Cpu())
@@ -115,8 +119,10 @@ class Evolve(Manager):
 
     @property
     def state(self) -> State:
-        while self.__transcription_generator.queue.qsize() > 0:
-            message: Message = self.__transcription_generator.queue.get()
+        #        while self.__transcription_generator.queue.qsize() > 0:
+        #            message: Message = self.__transcription_generator.queue.get
+        while self.__chat_queues.input_queue.qsize() > 0:
+            message: Message = self.__chat_queues.input_queue.queue.get()
             self._logger.info(message)
             self.__conversation.append(message)
 
@@ -133,9 +139,11 @@ class Evolve(Manager):
 
 if __name__ == '__main__':
     from infra.log.setup import LoggingSetup
+
     LoggingSetup(LoggingSetup.INFO)
 
     from time import sleep
+
     with Evolve() as evolve:
         evolve.run()
         sleep(20)

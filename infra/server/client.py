@@ -28,6 +28,22 @@ class Client(Loggable):
         else:
             self._logger.error(message)
 
+    def put_message(self, user_message: str, language: str):
+        response: Response = post(f"{self.__base_url}/textInput", json={'text': user_message, 'language': language})
+        message = f"{response.status_code}: {response.text}"
+        if response.status_code == 200:
+            self._logger.info(message)
+        else:
+            self._logger.error(message)
+
+    def get_messages(self):
+        response: Response = get(f"{self.__base_url}/textOutput")
+        message = f"{response.status_code}: {response.text}"
+        if response.status_code == 200:
+            self._logger.info(message)
+        else:
+            self._logger.error(message)
+
 
 if __name__ == '__main__':
     from infra.server.server import Server
