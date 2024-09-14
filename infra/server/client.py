@@ -1,5 +1,5 @@
 # External libs
-from requests import post, Response
+from requests import get, post, Response
 
 # Internal libs
 from infra.server import HOST, PORT
