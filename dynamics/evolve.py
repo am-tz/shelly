@@ -28,11 +28,8 @@ from peripherals.temperature.cpu import Cpu
 from infra.resources_management.manager import Manager
 
 # General utilities
-from time import sleep
 from datetime import datetime
 from typing import List
-
-from os import system
 
 
 # TODO: Github
@@ -77,7 +74,7 @@ class Evolve(Manager):
     __choice: Choice = None
     __execution: Execution = None
 
-    def __init__(self, language: Language = Language.EN):
+    def __init__(self, host: str, port: str, language: Language = Language.EN):
 
         super().__init__()
 
@@ -139,11 +136,15 @@ class Evolve(Manager):
 
 if __name__ == '__main__':
     from infra.log.setup import LoggingSetup
+    from sys import argv
+
+    host: str = argv[1] if len(argv) > 1 else None
+    port: str = argv[2] if len(argv) > 2 else None
 
     LoggingSetup(LoggingSetup.INFO)
 
     from time import sleep
 
-    with Evolve() as evolve:
+    with Evolve(host, port) as evolve:
         evolve.run()
         sleep(20)
