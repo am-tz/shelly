@@ -1,0 +1,48 @@
+version: 1
+disable_existing_loggers: False
+
+formatters:
+    simple:
+        format: '[%(asctime)s][(%(threadName)s) %(name)s][%(levelname)s] %(message)s'
+        datefmt: '%Y-%m-%d %H:%M:%S'
+
+handlers:
+    console:
+        class: logging.StreamHandler
+        level: DEBUG
+        formatter: simple
+        stream: ext://sys.stdout
+
+loggers:
+    __main__:
+        level: DEBUG
+        propagate: yes
+    
+    dynamics:
+        level: DEBUG
+        propagate: yes
+    
+    gpt:
+        level: DEBUG
+        propagate: yes
+    
+    infra:
+        level: INFO
+        propagate: yes
+    
+    werkzeug:
+        level: WARNING
+        propagate: yes
+    
+    peripherals.audio:
+        level: INFO
+        propagate: yes
+    
+    peripherals.wheels.move:
+        level: DEBUG
+        propagate: yes
+    
+    
+root:
+    level: WARNING
+    handlers: [console]

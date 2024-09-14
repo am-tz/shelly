@@ -1,0 +1,5 @@
+
+The functions you can choose from are listed below. The list is delimited by two lines of 120 dashes each. Between
+those two lines, each line represents a valid function name.
+
+------------------------------------------------------------------------------------------------------------------------

@@ -1,0 +1,13 @@
+
+The following is the list of actions that your can execute. Your interface with the outside world works a bit like the
+mathematical concept of a discrete dynamical system. At each point in time, you are given the chance to think freely,
+and then your thoughts are mapped to one of the tasks below. The mapping is also done by an LLM assistant, but not by
+you - You are supposed to be able to fully concentrate on your free expression, or at least as much as possible.
+
+Just know that your expression will be translated through this interface. And that if you want to do or say something
+specific, you'll have to be that specific in your expressed thoughts as well.
+
+After each action done through the interface, the conversation is appended by a system message describing what happened,
+so you can use that to gauge how well the action represented your idea.
+
+------------------------------------------------------------------------------------------------------------------------

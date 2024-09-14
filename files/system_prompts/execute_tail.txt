@@ -1,0 +1,9 @@
+------------------------------------------------------------------------------------------------------------------------
+
+This and the thought description are all the information you are working with in this call.
+
+Remember the key instructions:
+1. Choose the parameters most appropriate to the thought that Shelly is expressing.
+2. Make sure that your response contains one key-value pair of strings for each parameter, and nothing else.
+3. Be careful to spell every name correctly.
+4. Only respond in valid JSON.

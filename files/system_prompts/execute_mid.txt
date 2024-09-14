@@ -1,0 +1,6 @@
+
+Please find below the python docstring of the relevant function. Study it carefully to make sure you understand the
+viable inputs for each field. Then, for EACH parameter, create exactly ONE key-value pair of strings in your JSON
+output, where the key is the exact parameter name and the value is a STRING with the parameter value you have chosen.
+
+------------------------------------------------------------------------------------------------------------------------
