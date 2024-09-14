@@ -20,18 +20,19 @@ class Server(Manager):
     __server: BaseWSGIServer = None
     __thread: Thread = None
 
-    def __init__(self, move_implementation: MoveImp, custom_host: str = None):
+    def __init__(self, move_implementation: MoveImp, custom_host: str = None, custom_port: str = None):
 
         super().__init__()
 
         self.__host = custom_host or HOST
+        self.__port = custom_port or PORT
 
         if self.__host == 'localhost':
             self._logger.exception("Workaround to get local IP failed")
 
         self._logger.info(f"Starting server at {self.__host}:{PORT}")
 
-        self.__server = make_server(self.__host, PORT, App(move_implementation, self._was_closed).app)
+        self.__server = make_server(self.__host, self.__port, App(move_implementation, self._was_closed).app)
         self.__thread = Thread(target=self.__server.serve_forever)
         self.register(ManageableWrapper(like_start=self.__thread.start, like_close=self.__server.shutdown))
 

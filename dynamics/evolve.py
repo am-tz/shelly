@@ -87,7 +87,7 @@ class Evolve(Manager):
         # self.__transcription_generator = self.register(TranscriptionGenerator(self.__audio_input, 10.0))
         self.__chat_queues = self.register(ChatQueues())
         self.__white_noise_generator = self.register(WhiteNoiseGenerator())
-        self.__server_manager = self.register(Server(self.__move_imp))
+        self.__server_manager = self.register(Server(self.__move_imp, host, port))
         self.__cpu_temp_check = self.register(Cpu())
 
         self.__language = language
